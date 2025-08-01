@@ -9,17 +9,18 @@ load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_URL = os.getenv("GROQ_API_URL")
 MODEL = os.getenv("MODEL")
-
+4
 def get_career_advice(messages):
     headers = {
         "Authorization": f"Bearer {GROQ_API_KEY}",
         "Content-Type": "application/json"
     }
     payload = {
-        "model": MODEL,
-        "messages": messages,
-        "temperature": 0.7
-    }
+    "model": MODEL,
+    "messages": messages,
+    "temperature": 0.7,
+    "max_tokens": 500   
+}
     try:
         response = requests.post(GROQ_API_URL, headers=headers, json=payload, timeout=15)
         response.raise_for_status()
